@@ -8,6 +8,8 @@
       community.docker.docker_container:
         name: cms
         image: ghcr.io/sebasptsch/nextcms
+        pull: true
+        recreate: true
         ports:
           - "3002:3000"
         restart_policy: unless-stopped
