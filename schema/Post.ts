@@ -6,7 +6,7 @@ import {
   timestamp,
 } from "@keystone-next/keystone/fields";
 import { document } from "@keystone-next/fields-document";
-import componentBlocks from "../componentBlocks";
+import { componentBlocks } from "../componentBlocks";
 import { kebabCase } from "lodash";
 export const Post = list({
   fields: {
@@ -61,7 +61,7 @@ export const Post = list({
       ui: {
         views: require.resolve("../componentBlocks"),
       },
-      componentBlocks,
+      componentBlocks: { ...componentBlocks },
     }),
   },
   hooks: {
