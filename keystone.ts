@@ -5,14 +5,15 @@ It looks at the default export, and expects a Keystone config object.
 
 You can find all the config options in our docs here: https://keystonejs.com/docs/apis/config
 */
-
+import redis from "redis";
 import { config } from "@keystone-next/keystone";
-
+import { redisSessionStore } from "@keystone-next/session-store-redis";
 // Look in the schema file for how we define our lists, and how users interact with them through graphql or the Admin UI
 import lists from "./schema";
 
 // Keystone auth is configured separately - check out the basic auth setup we are importing from our auth file.
 import { withAuth, session } from "./auth";
+import { storedSessions } from "@keystone-next/keystone/session";
 
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.
@@ -41,8 +42,14 @@ export default withAuth(
       // For our starter, we check that someone has session data before letting them see the Admin UI.
       isAccessAllowed: (context) => !!context.session?.data,
     },
-
-    lists,
     session,
+    lists,
+    images: {
+      upload: "local",
+      local: {
+        storagePath: "config/images",
+        baseUrl: "/images",
+      },
+    },
   })
 );
