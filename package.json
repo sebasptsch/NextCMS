@@ -6,7 +6,7 @@
     "dev": "keystone-next dev",
     "start": "keystone-next start",
     "build": "keystone-next build",
-    "migrate": "keystone-next prisma migrate deploy",
+    "migrate": "prisma migrate deploy",
     "postinstall": "keystone-next postinstall"
   },
   "dependencies": {
