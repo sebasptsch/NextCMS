@@ -44,6 +44,8 @@ steps:
       repo: ghcr.io/sebasptsch/nextcms
       registry: ghcr.io
       auto_tag: true
+      purge: false
+      pull_image: false
   - name: Rebuild Cache
     image: drillster/drone-volume-cache
     pull: if-not-exists
