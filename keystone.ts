@@ -39,7 +39,7 @@ export default withAuth(
         ],
       ],
       // For our starter, we check that someone has session data before letting them see the Admin UI.
-      isAccessAllowed: (context) => !!context.session?.data,
+      isAccessAllowed: (context) => true,
     },
 
     lists,
