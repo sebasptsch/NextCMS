@@ -13,7 +13,7 @@ steps:
       restore: true
       mount:
         - ./node_modules
-        - ./.keystone/.next/cache
+        - ./.keystone/admin/.next/cache
   - name: Build
     pull: if-not-exists
     image: node:lts-alpine
@@ -58,7 +58,7 @@ steps:
       rebuild: true
       mount:
         - ./node_modules
-        - ./.keystone/.next/cache
+        - ./.keystone/admin/.next/cache
 
 volumes:
   - name: cache
