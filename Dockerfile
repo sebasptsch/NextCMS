@@ -4,6 +4,7 @@ RUN apk add libc6-compat
 COPY  ./.keystone ./.keystone
 COPY  ./node_modules ./node_modules
 COPY  ./package.json ./package.json
+COPY  ./schema.prisma ./schema.prisma
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
