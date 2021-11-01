@@ -73,10 +73,10 @@ name: Deploy
 steps:
   - name: Deploy Using Ansible
     image: plugins/ansible
+    environment:
+      SESSION_SECRET:
+        from_secret: SESSION_SECRET
     settings:
-      environment:
-        SESSION_SECRET:
-          from_secret: SESSION_SECRET
       playbook: .ansible/playbook.yml
       ssh_extra_args:
         - "-o StrictHostKeyChecking=no"
