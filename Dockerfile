@@ -10,4 +10,4 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 EXPOSE 3000
 RUN /app/node_modules/.bin/keystone-next postinstall
-CMD ["/app/node_modules/.bin/keystone-next" "start"]
+CMD ["yarn start"]
