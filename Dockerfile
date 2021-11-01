@@ -3,6 +3,7 @@ WORKDIR /app
 RUN apk add libc6-compat
 COPY  ./.keystone ./.keystone
 COPY  ./node_modules ./node_modules
+COPY  ./migrations ./migrations
 COPY  ./package.json ./package.json
 COPY  ./schema.prisma ./schema.prisma
 ENV PRISMA_CLI_QUERY_ENGINE_TYPE=binary
