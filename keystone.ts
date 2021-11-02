@@ -54,7 +54,10 @@ export default withAuth(
       upload: "local",
       local: {
         storagePath: "config/images",
-        baseUrl: "/images",
+        baseUrl:
+          process.env.NODE_ENV === "production"
+            ? "https://cms.sebasptsch.dev/images"
+            : "/images",
       },
     },
     server: {
