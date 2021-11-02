@@ -34,7 +34,7 @@ model Post {
 
 model Tag {
   id    String @id @default(cuid())
-  name  String @default("")
+  name  String @unique @default("")
   posts Post[] @relation("Post_tags_Tag_posts")
 }
 

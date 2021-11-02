@@ -6,7 +6,7 @@ export const Tag = list({
     isHidden: true,
   },
   fields: {
-    name: text({ isFilterable: true }),
+    name: text({ isFilterable: true, isIndexed: "unique" }),
     posts: relationship({ ref: "Post.tags", many: true }),
   },
 });

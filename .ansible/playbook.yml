@@ -11,7 +11,7 @@
         pull: true
         recreate: true
         ports:
-          - "3002:3000"
+          - "3002:3002"
         restart_policy: unless-stopped
         env:
           SESSION_SECRET: "{{ lookup('env', 'SESSION_SECRET') }}"
