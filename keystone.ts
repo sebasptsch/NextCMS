@@ -38,13 +38,8 @@ export default withAuth(
         ],
       ],
       // For our starter, we check that someone has session data before letting them see the Admin UI.
-      isAccessAllowed: (context) => {
-        console.log(context.req?.url, !!context.session?.data);
-
-        return startsWith(context.req?.url, "/images")
-          ? true
-          : !!context.session?.data;
-      },
+      isAccessAllowed: (context) => !!context.session?.data,
+      publicPages: ["/images"],
     },
     graphql: {
       apolloConfig: {
@@ -53,7 +48,7 @@ export default withAuth(
     },
     server: {
       extendExpressApp: (app) => {
-        app.use("/images", express.static("public/images"));
+        app.use("/images", express.static("config/images"));
       },
       port: 3002,
     },
