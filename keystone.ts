@@ -42,6 +42,11 @@ export default withAuth(
       // For our starter, we check that someone has session data before letting them see the Admin UI.
       isAccessAllowed: (context) => !!context.session?.data,
     },
+    graphql: {
+      apolloConfig: {
+        introspection: process.env.NODE_ENV !== "production",
+      },
+    },
     session,
     lists,
     images: {
@@ -50,6 +55,9 @@ export default withAuth(
         storagePath: "config/images",
         baseUrl: "/images",
       },
+    },
+    server: {
+      port: 3002,
     },
   })
 );
