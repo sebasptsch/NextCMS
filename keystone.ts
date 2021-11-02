@@ -39,6 +39,11 @@ export default withAuth(
       ],
       // For our starter, we check that someone has session data before letting them see the Admin UI.
       isAccessAllowed: (context) => {
+        console.log(
+          startsWith(context.req?.url, "/images")
+            ? true
+            : !!context.session?.data
+        );
         return startsWith(context.req?.url, "/images")
           ? true
           : !!context.session?.data;
