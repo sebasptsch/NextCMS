@@ -14,7 +14,7 @@ import lists from "./schema";
 // Keystone auth is configured separately - check out the basic auth setup we are importing from our auth file.
 import { withAuth, session } from "./auth";
 import { storedSessions } from "@keystone-next/keystone/session";
-
+import express from "express";
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
@@ -51,17 +51,20 @@ export default withAuth(
         introspection: process.env.NODE_ENV !== "production",
       },
     },
+    server: {
+      extendExpressApp: (app) => {
+        app.use("/images", express.static("public/images"));
+      },
+      port: 3002,
+    },
     session,
     lists,
     images: {
       upload: "local",
       local: {
         storagePath: "config/images",
-        baseUrl: "/images",
+        baseUrl: "https://cms.sebasptsch.dev/images",
       },
-    },
-    server: {
-      port: 3002,
     },
   })
 );
