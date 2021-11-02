@@ -10,6 +10,8 @@
         image: ghcr.io/sebasptsch/nextcms
         pull: true
         recreate: true
+        networks:
+          - blog
         ports:
           - "3002:3002"
         restart_policy: unless-stopped
