@@ -58,7 +58,7 @@ export default withAuth(
       upload: "local",
       local: {
         storagePath: "config/images",
-        baseUrl: "/images",
+        baseUrl: "https://cms.sebasptsch.dev/images",
       },
     },
   })
