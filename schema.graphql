@@ -288,6 +288,7 @@ type Tag {
     skip: Int! = 0
   ): [Post!]
   postsCount(where: PostWhereInput! = {}): Int
+  slug: String
 }
 
 input TagWhereUniqueInput {
@@ -302,6 +303,7 @@ input TagWhereInput {
   id: IDFilter
   name: StringFilter
   posts: PostManyRelationFilter
+  slug: StringFilter
 }
 
 input PostManyRelationFilter {
@@ -313,11 +315,13 @@ input PostManyRelationFilter {
 input TagOrderByInput {
   id: OrderDirection
   name: OrderDirection
+  slug: OrderDirection
 }
 
 input TagUpdateInput {
   name: String
   posts: PostRelateToManyForUpdateInput
+  slug: String
 }
 
 input PostRelateToManyForUpdateInput {
@@ -335,6 +339,7 @@ input TagUpdateArgs {
 input TagCreateInput {
   name: String
   posts: PostRelateToManyForCreateInput
+  slug: String
 }
 
 input PostRelateToManyForCreateInput {
