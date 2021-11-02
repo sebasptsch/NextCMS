@@ -36,7 +36,7 @@ export default withAuth(
           {
             mode: "write",
             outputPath: "next.config.js",
-            src: `module.exports = { ...require('@keystone-next/keystone/static/next.config.js'), images: { domains: ["pbs.twimg.com"] } }`,
+            src: `module.exports = { ...require('@keystone-next/keystone/static/next.config.js'), images: { domains: ["pbs.twimg.com"], disableStaticImages: true } }`,
           },
         ],
       ],
