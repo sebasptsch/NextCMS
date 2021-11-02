@@ -113,7 +113,7 @@ input PostWhereInput {
   OR: [PostWhereInput!]
   NOT: [PostWhereInput!]
   id: IDFilter
-  title: StringNullableFilter
+  title: StringFilter
   slug: StringFilter
   summary: StringFilter
   published_at: DateTimeFilter
@@ -130,34 +130,6 @@ input IDFilter {
   gt: ID
   gte: ID
   not: IDFilter
-}
-
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
-}
-
-input NestedStringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
 }
 
 input StringFilter {
@@ -288,6 +260,7 @@ type Tag {
     skip: Int! = 0
   ): [Post!]
   postsCount(where: PostWhereInput! = {}): Int
+  description: String
   slug: String
 }
 
@@ -304,6 +277,7 @@ input TagWhereInput {
   id: IDFilter
   name: StringFilter
   posts: PostManyRelationFilter
+  description: StringFilter
   slug: StringFilter
 }
 
@@ -316,12 +290,14 @@ input PostManyRelationFilter {
 input TagOrderByInput {
   id: OrderDirection
   name: OrderDirection
+  description: OrderDirection
   slug: OrderDirection
 }
 
 input TagUpdateInput {
   name: String
   posts: PostRelateToManyForUpdateInput
+  description: String
   slug: String
 }
 
@@ -340,6 +316,7 @@ input TagUpdateArgs {
 input TagCreateInput {
   name: String
   posts: PostRelateToManyForCreateInput
+  description: String
   slug: String
 }
 

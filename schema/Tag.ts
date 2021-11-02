@@ -9,6 +9,7 @@ export const Tag = list({
   fields: {
     name: text({ isFilterable: true, isIndexed: "unique" }),
     posts: relationship({ ref: "Post.tags", many: true }),
+    description: text(),
     slug: text({
       isIndexed: "unique",
       isFilterable: true,

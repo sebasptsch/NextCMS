@@ -14,7 +14,7 @@ generator client {
 
 model Post {
   id              String   @id @default(cuid())
-  title           String?
+  title           String   @default("")
   slug            String   @unique @default("")
   summary         String   @default("")
   image_filesize  Int?
@@ -33,10 +33,11 @@ model Post {
 }
 
 model Tag {
-  id    String @id @default(cuid())
-  name  String @unique @default("")
-  posts Post[] @relation("Post_tags_Tag_posts")
-  slug  String @unique @default("")
+  id          String @id @default(cuid())
+  name        String @unique @default("")
+  posts       Post[] @relation("Post_tags_Tag_posts")
+  description String @default("")
+  slug        String @unique @default("")
 }
 
 model User {

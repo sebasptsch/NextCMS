@@ -11,7 +11,7 @@ import { kebabCase } from "lodash";
 export const Post = list({
   fields: {
     title: text({
-      db: { isNullable: true },
+      db: { isNullable: false },
     }),
     slug: text({
       isIndexed: "unique",
