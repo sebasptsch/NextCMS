@@ -11,7 +11,7 @@
         pull: true
         recreate: true
         networks:
-          - blog
+          - name: blog
         ports:
           - "3002:3002"
         restart_policy: unless-stopped
