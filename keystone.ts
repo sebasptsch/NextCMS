@@ -22,6 +22,7 @@ export default withAuth(
     db: {
       provider: "sqlite",
       url: "file:./config/keystone.db",
+      useMigrations: true,
     },
     experimental: {
       enableNextJsGraphqlApiEndpoint: true,
