@@ -8,6 +8,13 @@ import {
 import { document } from "@keystone-next/fields-document";
 import { componentBlocks } from "../componentBlocks";
 import { kebabCase } from "lodash";
+import readingTime from "reading-time";
+import { Node } from "slate";
+
+const serialize = (nodes: Array<Node>) => {
+  return nodes.map((n) => Node.string(n)).join("\n");
+};
+
 export const Post = list({
   fields: {
     title: text({
@@ -30,6 +37,19 @@ export const Post = list({
     }),
     summary: text({ db: { isNullable: false } }),
     image: image(),
+    readingtime: text({
+      ui: {
+        createView: {
+          fieldMode: "hidden",
+        },
+        itemView: {
+          fieldMode: "read",
+        },
+        listView: {
+          fieldMode: "read",
+        },
+      },
+    }),
     published_at: timestamp({ isOrderable: true, db: { isNullable: false } }),
     author: relationship({
       ref: "User.posts",
@@ -67,10 +87,14 @@ export const Post = list({
   hooks: {
     resolveInput: ({ resolvedData }) => {
       // console.log(resolvedData);
-      const { title } = resolvedData;
+      const { title, content } = resolvedData;
       if (title) {
-        // Ensure the first letter of the title is capitalised
         resolvedData.slug = kebabCase(title);
+      }
+      if (content) {
+        resolvedData.readingtime = readingTime(
+          serialize(JSON.parse(content))
+        ).text;
       }
       // We always return resolvedData from the resolveInput hook
       return resolvedData;

@@ -4,9 +4,6 @@
     - name: Create Network
       community.docker.docker_network:
         name: blog
-    - name: Create Hera Netword
-      community.docker.docker_network:
-        name: hera
     - name: Deploy CMS
       community.docker.docker_container:
         name: cms
@@ -15,7 +12,6 @@
         recreate: true
         networks:
           - name: blog
-          - name: hera
         ports:
           - "3002:3002"
         restart_policy: unless-stopped
