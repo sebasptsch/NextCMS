@@ -329,6 +329,7 @@ type User {
   id: ID!
   name: String
   email: String
+  slug: String
   password: PasswordState
   posts(
     where: PostWhereInput! = {}
@@ -346,6 +347,7 @@ type PasswordState {
 input UserWhereUniqueInput {
   id: ID
   email: String
+  slug: String
 }
 
 input UserWhereInput {
@@ -355,6 +357,7 @@ input UserWhereInput {
   id: IDFilter
   name: StringFilter
   email: StringFilter
+  slug: StringFilter
   posts: PostManyRelationFilter
 }
 
@@ -362,11 +365,13 @@ input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
   email: OrderDirection
+  slug: OrderDirection
 }
 
 input UserUpdateInput {
   name: String
   email: String
+  slug: String
   password: String
   posts: PostRelateToManyForUpdateInput
 }
@@ -379,6 +384,7 @@ input UserUpdateArgs {
 input UserCreateInput {
   name: String
   email: String
+  slug: String
   password: String
   posts: PostRelateToManyForCreateInput
 }
