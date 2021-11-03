@@ -49,6 +49,7 @@ export const Post = list({
           fieldMode: "read",
         },
       },
+      label: "Reading Time",
     }),
     published_at: timestamp({ isOrderable: true, db: { isNullable: false } }),
     author: relationship({
