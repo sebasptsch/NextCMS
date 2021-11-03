@@ -12,6 +12,7 @@ export const User = list({
       isIndexed: "unique",
       isFilterable: true,
     }),
+    bio: text(),
     slug: text({
       isIndexed: "unique",
       isFilterable: true,
